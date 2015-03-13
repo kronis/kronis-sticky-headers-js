@@ -1,12 +1,12 @@
 {
-  "name": "kronis-sticky-headers-js",
+  "name": "kronis-sticky-headers",
   "version": "1.0.0",
   "homepage": "https://github.com/kronis/kronis-sticky-headers-js",
   "authors": [
     "Markus Loupeen <kronis85@gmail.com>",
     "Charlie Midtlyng <charlie.midtlyng@bekk.no>"
   ],
-  "description": "A sticky header for jQuery that also works with react js.",
+  "description": "A sticky header for jQuery, works with react js.",
   "main": "sticky-header.js",
   "moduleType": [
     "globals"
