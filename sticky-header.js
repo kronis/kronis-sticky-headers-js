@@ -20,6 +20,7 @@ $.fn.sticky = function() {
                 if ($this.find('thead.sticky').size() === 0) {
                     $this.find('thead').addClass('sticky');
                     var clonedHead = $this.find('thead').clone();
+                    clonedHead.removeAttr('data-reactid');
                     clonedHead.find('[data-reactid]').removeAttr('data-reactid');
                     clonedHead.addClass('sticky-clone-placeholder').removeClass('sticky');
                     $this.prepend(clonedHead);
