@@ -25,7 +25,9 @@ $.fn.sticky = function() {
         function scrollFixed() {
             var offset = $(window).scrollTop();
             var tableOffsetTop = $this.offset().top;
-            if (offset > tableOffsetTop) {
+            var tableHeight = $this.height();
+            var isVisible = (offset > tableOffsetTop) && (offset < tableOffsetTop + tableHeight);
+            if (isVisible && offset > tableOffsetTop) {
                 // Create a cloned placeholder
                 if ($this.find('thead.sticky').size() === 0) {
                     $this.find('thead').addClass('sticky');
