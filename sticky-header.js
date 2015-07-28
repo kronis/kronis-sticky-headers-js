@@ -33,7 +33,7 @@ $.fn.sticky = function() {
                     $this.find('thead').addClass('sticky');
                     var clonedHead = $this.find('thead').clone();
                     clonedHead.find('[data-reactid]').removeAttr('data-reactid');
-                    clonedHead.addClass('sticky-clone-placeholder').removeClass('sticky');
+                    clonedHead.addClass('sticky-clone-placeholder').removeClass('sticky').removeAttr('data-reactid');
                     $this.prepend(clonedHead);
                 }
 
