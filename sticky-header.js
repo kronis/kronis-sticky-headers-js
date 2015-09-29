@@ -5,18 +5,18 @@ $.fn.sticky = function() {
         var doResizing;
 
         function resetHeaderInfo() {
-            $this.find('tbody tr:first td').css('width', '');
-            $this.find('th').css('min-width', '');
-            $this.find('thead.sticky').removeClass('sticky');
-            $this.find('thead.sticky-clone-placeholder').remove();
+            $this.children('tbody').children('tr:first').children('td').css('width', '');
+            $this.children('tbody, thead, tfoot').children('tr').children('th').css('min-width', '');
+            $this.children('thead.sticky').removeClass('sticky');
+            $this.children('thead.sticky-clone-placeholder').remove();
         }
 
         function init() {
             resetHeaderInfo();
-            $this.find('tbody tr:first td').each(function() {
+            $this.children('tbody').children('tr:first').children('td').each(function() {
                 $(this).css('width', $(this).css('width', '').outerWidth() + 'px');
             });
-            $this.find('th').each(function() {
+            $this.children('tbody, thead, tfoot').children('tr').children('th').css('min-width', '').each(function() {
                 $(this).css('min-width', $(this).outerWidth() + 'px');
             });
 
@@ -29,21 +29,21 @@ $.fn.sticky = function() {
             var isVisible = (offset > tableOffsetTop) && (offset < tableOffsetTop + tableHeight);
             if (isVisible && offset > tableOffsetTop) {
                 // Create a cloned placeholder
-                if ($this.find('thead.sticky').size() === 0) {
-                    $this.find('thead').addClass('sticky');
-                    var clonedHead = $this.find('thead').clone();
-                    clonedHead.find('[data-reactid]').removeAttr('data-reactid');
+                if ($this.children('thead.sticky').size() === 0) {
+                    $this.children('thead').addClass('sticky');
+                    var clonedHead = $this.children('thead').clone();
+                    clonedHead.children('[data-reactid]').removeAttr('data-reactid');
                     clonedHead.addClass('sticky-clone-placeholder').removeClass('sticky').removeAttr('data-reactid');
                     $this.prepend(clonedHead);
                 }
 
                 // Fulfill scrolling left and right
                 var scrollLeft = $(window).scrollLeft();
-                var offsetLeft = $this.find('.sticky-clone-placeholder').offset().left;
-                $this.find('thead.sticky').css('left', -1 * scrollLeft + offsetLeft);
+                var offsetLeft = $this.children('.sticky-clone-placeholder').offset().left;
+                $this.children('thead.sticky').css('left', -1 * scrollLeft + offsetLeft);
             } else {
-                $this.find('thead.sticky').removeClass('sticky');
-                $this.find('thead.sticky-clone-placeholder').remove();
+                $this.children('thead.sticky').removeClass('sticky');
+                $this.children('thead.sticky-clone-placeholder').remove();
             }
         }
 
